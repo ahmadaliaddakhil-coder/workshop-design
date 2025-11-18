@@ -1,0 +1,60 @@
+.dashboard-widgets .stat-card {
+  padding: 22px 26px;
+  border-radius: 22px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* Semua card tinggi sama */
+  min-height: 150px;
+
+  /* Animasi hover */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.dashboard-widgets .stat-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Nilai */
+.stat-value {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 4px;
+
+  /* Membatasi 1 baris */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Judul */
+.stat-title {
+  font-size: 15px;
+  opacity: 0.9;
+  margin-top: 8px;
+
+  /* Membatasi 1 baris */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Warna gradasi */
+.stat-card.purple {
+  background: linear-gradient(135deg, #6a73ff, #4b51f8);
+}
+
+.stat-card.green {
+  background: linear-gradient(135deg, #36ba63, #2e9b53);
+}
+
+.stat-card.blue {
+  background: linear-gradient(135deg, #4cb6ff, #1f95ff);
+}
+
+.stat-card.red {
+  background: linear-gradient(135deg, #ff6666, #d94848);
+}
