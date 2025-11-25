@@ -12,6 +12,7 @@ import {
   CHeaderToggler,
   CNavLink,
   CNavItem,
+  CBadge,
   useColorModes,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
@@ -38,22 +39,33 @@ const AppHeader = () => {
   useEffect(() => {
     document.addEventListener('scroll', () => {
       headerRef.current &&
-        headerRef.current.classList.toggle('shadow-sm', document.documentElement.scrollTop > 0)
+        headerRef.current.classList.toggle(
+          'shadow-sm',
+          document.documentElement.scrollTop > 0,
+        )
     })
   }, [])
 
   return (
-    <CHeader position="sticky" className="mb-4 p-0" ref={headerRef}>
-      <CContainer className="border-bottom px-4" fluid>
+    <CHeader position="sticky" className="mb-3 p-0 bg-body" ref={headerRef}>
+      <CContainer
+        className="px-4 py-2 border-bottom"
+        style={{ borderColor: 'var(--cui-border-color-translucent)' }}
+        fluid
+      >
+        {/* Toggler */}
         <CHeaderToggler
           onClick={() => dispatch({ type: 'set', sidebarShow: !sidebarShow })}
-          style={{ marginInlineStart: '-14px' }}
+          className="me-4 text-body"
+          style={{ marginInlineStart: '-8px' }}
         >
           <CIcon icon={cilMenu} size="lg" />
         </CHeaderToggler>
-        <CHeaderNav className="d-none d-md-flex">
+
+        {/* Navigation */}
+        <CHeaderNav className="d-none d-md-flex gap-2">
           <CNavItem>
-            <CNavLink to="/dashboard" as={NavLink}>
+            <CNavLink as={NavLink} to="/dashboard">
               Dashboard
             </CNavLink>
           </CNavItem>
@@ -64,29 +76,46 @@ const AppHeader = () => {
             <CNavLink href="#">Settings</CNavLink>
           </CNavItem>
         </CHeaderNav>
-        <CHeaderNav className="ms-auto">
+
+        {/* Right Icons */}
+        <CHeaderNav className="ms-auto d-flex align-items-center gap-2">
+
+          {/* Notifications */}
           <CNavItem>
-            <CNavLink href="#">
+            <CNavLink href="#" className="position-relative icon-hover">
               <CIcon icon={cilBell} size="lg" />
+              <CBadge
+                color="danger"
+                size="sm"
+                className="position-absolute top-0 start-100 translate-middle rounded-pill"
+              >
+                3
+              </CBadge>
             </CNavLink>
           </CNavItem>
+
+          {/* Task */}
           <CNavItem>
-            <CNavLink href="#">
+            <CNavLink href="#" className="icon-hover">
               <CIcon icon={cilList} size="lg" />
             </CNavLink>
           </CNavItem>
+
+          {/* Messages */}
           <CNavItem>
-            <CNavLink href="#">
+            <CNavLink href="#" className="icon-hover">
               <CIcon icon={cilEnvelopeOpen} size="lg" />
             </CNavLink>
           </CNavItem>
-        </CHeaderNav>
-        <CHeaderNav>
+
+          {/* Divider */}
           <li className="nav-item py-1">
-            <div className="vr h-100 mx-2 text-body text-opacity-75"></div>
+            <div className="vr h-100 mx-2 text-body text-opacity-50"></div>
           </li>
+
+          {/* Color Mode Switch */}
           <CDropdown variant="nav-item" placement="bottom-end">
-            <CDropdownToggle caret={false}>
+            <CDropdownToggle caret={false} className="icon-hover">
               {colorMode === 'dark' ? (
                 <CIcon icon={cilMoon} size="lg" />
               ) : colorMode === 'auto' ? (
@@ -95,43 +124,49 @@ const AppHeader = () => {
                 <CIcon icon={cilSun} size="lg" />
               )}
             </CDropdownToggle>
-            <CDropdownMenu>
+            <CDropdownMenu className="py-1">
               <CDropdownItem
                 active={colorMode === 'light'}
-                className="d-flex align-items-center"
                 as="button"
-                type="button"
+                className="d-flex align-items-center gap-2"
                 onClick={() => setColorMode('light')}
               >
-                <CIcon className="me-2" icon={cilSun} size="lg" /> Light
+                <CIcon icon={cilSun} size="lg" />
+                Light
               </CDropdownItem>
               <CDropdownItem
                 active={colorMode === 'dark'}
-                className="d-flex align-items-center"
                 as="button"
-                type="button"
+                className="d-flex align-items-center gap-2"
                 onClick={() => setColorMode('dark')}
               >
-                <CIcon className="me-2" icon={cilMoon} size="lg" /> Dark
+                <CIcon icon={cilMoon} size="lg" />
+                Dark
               </CDropdownItem>
               <CDropdownItem
                 active={colorMode === 'auto'}
-                className="d-flex align-items-center"
                 as="button"
-                type="button"
+                className="d-flex align-items-center gap-2"
                 onClick={() => setColorMode('auto')}
               >
-                <CIcon className="me-2" icon={cilContrast} size="lg" /> Auto
+                <CIcon icon={cilContrast} size="lg" />
+                Auto
               </CDropdownItem>
             </CDropdownMenu>
           </CDropdown>
+
+          {/* Divider */}
           <li className="nav-item py-1">
-            <div className="vr h-100 mx-2 text-body text-opacity-75"></div>
+            <div className="vr h-100 mx-2 text-body text-opacity-50"></div>
           </li>
+
+          {/* Profile Dropdown */}
           <AppHeaderDropdown />
         </CHeaderNav>
       </CContainer>
-      <CContainer className="px-4" fluid>
+
+      {/* Breadcrumb */}
+      <CContainer className="px-4 py-2" fluid>
         <AppBreadcrumb />
       </CContainer>
     </CHeader>

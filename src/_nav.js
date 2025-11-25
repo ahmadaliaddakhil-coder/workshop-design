@@ -28,6 +28,18 @@ const _nav = [
     },
   },
   {
+  component: CNavItem,
+  name: 'Tugas',
+  to: '/tasks',
+  icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
+    badge: {
+      color: 'info',
+      text: 'NEW',
+    },
+  },
+
+  /*
+  {
     component: CNavTitle,
     name: 'Theme',
   },
@@ -488,6 +500,7 @@ const _nav = [
     href: 'https://coreui.io/react/docs/templates/installation/',
     icon: <CIcon icon={cilDescription} customClassName="nav-icon" />,
   },
+  */
 ]
 
 export default _nav

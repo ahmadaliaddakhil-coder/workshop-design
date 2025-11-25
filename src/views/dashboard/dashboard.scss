@@ -5,48 +5,73 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   min-height: 150px;
 
+  background-size: 200% 200%;
+  animation: gradientMove 8s ease infinite;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
 
+/* Hover subtle + glow */
 .dashboard-widgets .stat-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.22);
 }
 
+/* Value */
 .stat-value {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  letter-spacing: -0.3px;
 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+/* Title */
 .stat-title {
   font-size: 15px;
-  opacity: 0.9;
+  opacity: 0.95;
   margin-top: 8px;
+
+  font-weight: 500;
+  letter-spacing: 0.2px;
+
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+/* =====================
+   Better Gradient Colors
+   ===================== */
 .stat-card.purple {
-  background: linear-gradient(135deg, #6a73ff, #4b51f8);
+  background: linear-gradient(135deg, #7378ff, #4a4ff1);
 }
 
 .stat-card.green {
-  background: linear-gradient(135deg, #36ba63, #2e9b53);
+  background: linear-gradient(135deg, #42cc74, #2c9a55);
 }
 
 .stat-card.blue {
-  background: linear-gradient(135deg, #4cb6ff, #1f95ff);
+  background: linear-gradient(135deg, #56c6ff, #157fe8);
 }
 
 .stat-card.red {
-  background: linear-gradient(135deg, #ff6666, #d94848);
+  background: linear-gradient(135deg, #ff6e6e, #d73e3e);
+}
+
+/* Gradient subtle animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
