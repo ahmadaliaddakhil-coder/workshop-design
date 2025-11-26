@@ -17,7 +17,6 @@ const Dashboard = () => {
   const [search, setSearch] = useState('')
   const [filterPresensi, setFilterPresensi] = useState('all')
 
-  // Fetch students from Supabase
   useEffect(() => {
     let isMounted = true
     setLoading(true)
@@ -43,7 +42,6 @@ const Dashboard = () => {
         setLoading(false)
       })
 
-    // cleanup
     return () => {
       isMounted = false
     }
@@ -65,11 +63,10 @@ const Dashboard = () => {
     })
   }, [students, search, filterPresensi])
 
-  // Optional: function to update kehadiran (example)
   const updateKehadiran = async (id, newValue) => {
     const { data, error } = await supabase.from('students').update({ kehadiran: newValue }).eq('id', id)
     if (error) return setError(error.message)
-    // Update local state
+
     setStudents((prev) => prev.map((s) => (s.id === id ? { ...s, kehadiran: newValue } : s)))
   }
 

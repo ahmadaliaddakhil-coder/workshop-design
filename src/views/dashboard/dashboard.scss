@@ -18,13 +18,11 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Hover subtle + glow */
 .dashboard-widgets .stat-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 16px 32px rgba(0,0,0,0.22);
 }
 
-/* Value */
 .stat-value {
   font-size: 28px;
   font-weight: 700;
@@ -36,7 +34,6 @@
   text-overflow: ellipsis;
 }
 
-/* Title */
 .stat-title {
   font-size: 15px;
   opacity: 0.95;
@@ -50,9 +47,6 @@
   text-overflow: ellipsis;
 }
 
-/* =====================
-   Better Gradient Colors
-   ===================== */
 .stat-card.purple {
   background: linear-gradient(135deg, #7378ff, #4a4ff1);
 }
@@ -69,7 +63,6 @@
   background: linear-gradient(135deg, #ff6e6e, #d73e3e);
 }
 
-/* Gradient subtle animation */
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
